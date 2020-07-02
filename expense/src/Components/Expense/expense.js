@@ -19,7 +19,7 @@ function Expense(props) {
   };
   const handleAddition = () => {
     if (desc.trim() !== "" && amount.trim() !== "") {
-      props.getIncome({desc,amount});
+      props.getExpense({desc,amount});
       setAmount(''
       );
       setDesc(''
