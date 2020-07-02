@@ -3,21 +3,21 @@ import "./display.css";
 import IncomeDisplay from './IncomeDisplay/incomeDisplay'
 import ExpenseDisplay from './ExpenseDisplay/expenseDisplay'
 
-class Display extends Component {
-    delete = (data)=>{
-        this.props.deleteElement(data)
+function Display (props) {
+    const deleteData = (data)=>{
+        props.deleteElement(data)
     }
-  render() {
-    //   console.log(this.props.data)
+
+    //   console.log(props.data)
     return (
       <div className="data-display">
             <div className="display-flex-box">
-                <IncomeDisplay delete = {this.delete} income = {this.props.data.income}/>
-                <ExpenseDisplay delete = {this.delete}  expense = {this.props.data.expense}/>
+                <IncomeDisplay delete = {deleteData} income = {props.data.income}/>
+                <ExpenseDisplay delete = {deleteData}  expense = {props.data.expense}/>
             </div>
       </div>
     );
-  }
+
 }
 
 export default Display;

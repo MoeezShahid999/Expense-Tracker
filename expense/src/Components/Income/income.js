@@ -1,58 +1,54 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./income.css";
-class Income extends Component {
-  state = {
-    desc: "",
-    amount: "",
+function Income(props) {
+  const [desc, setDesc] = useState('');
+  const [amount, setAmount] = useState('');
+
+  const handleDesc = (e) => {
+    setDesc(
+      e.target.value,
+    );
   };
-  handleDesc = (e) => {
-    this.setState({
-      desc: e.target.value,
-    });
-  };
-  handleAmount = (e) => {
-    if (!(isNaN(+e.target.value))) {
-      this.setState({
-        amount: e.target.value,
-      });
+  const handleAmount = (e) => {
+    if (!isNaN(+e.target.value)) {
+      setAmount(
+         e.target.value,
+      );
     } else {
       alert("This is not a number");
     }
   };
-  handleAddition = () => {
-    if(this.state.desc.trim() !== '' && this.state.amount.trim() !== ''){
-
-      this.props.getIncome(this.state);
-      this.setState({
-        desc: "",
-        amount: "",
-      });
-    }else{
-      alert("Complete the fields")
+  const handleAddition = () => {
+    if (desc.trim() !== "" && amount.trim() !== "") {
+      props.getIncome({desc,amount});
+      setAmount(''
+      );
+      setDesc(''
+      );
+    } else {
+      alert("Complete the fields");
     }
-
   };
-  render() {
-    return (
-      <div className="Income">
-        <input
-          placeholder="Enter Description"
-          className="desc"
-          onChange={this.handleDesc}
-          value={this.state.desc}
-        />
-        <input
-          placeholder="Income"
-          className="amount"
-          onChange={this.handleAmount}
-          value={this.state.amount}
-        />
-        <button onClick={this.handleAddition} className="add-btn">
-          Add
-        </button>
-      </div>
-    );
-  }
+
+  return (
+    <div className="Income">
+      <input
+        placeholder="Enter Description"
+        className="desc"
+        onChange={handleDesc}
+        value={desc}
+      />
+      <input
+        placeholder="Income"
+        className="amount"
+        onChange={handleAmount}
+        value={amount}
+      />
+      <button onClick={handleAddition} className="add-btn">
+        Add
+      </button>
+    </div>
+  );
 }
 
 export default Income;

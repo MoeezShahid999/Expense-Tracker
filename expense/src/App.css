@@ -14,7 +14,15 @@
 }
 .App .flex-box .Income,
 .App .flex-box .Expense {
+  margin-top: 30px;
   flex: 1;
+  /* text-align: center; */
+  /* border: 1px solid black; */
+}
+.App .flex-box .Income *,
+.App .flex-box .Expense *{
+  /* margin-left: 0px !important; */
+  /* border: 1px solid black; */
 }
 .App .flex-box input {
   margin: 10px 10px;
@@ -42,7 +50,7 @@
   outline: none;
   padding: 5px;
   height: 40px;
-  width: 7vw;
+  width: 9vw;
   background-color: white;
   border: 1px solid black;
   cursor: pointer;
@@ -124,48 +132,51 @@
 /* .App .info-flex {
   display: flex;
 } */
-.info-display .total-income{
+.total-heading {
+  font-size: 24px;
+  font-weight: 600;
+}
+.total-amount {
+  font-size: 24px;
+  font-weight: 600;
+}
+.info-display{
+  display: flex;
+}
+.info-display .total-income {
   margin: 10px;
   background-color: white;
-  display: flex;
   padding: 10px;
   text-align: center;
-
+  display: flex;
+  flex: 1;
 }
-.info-display .total-heading{
-
-  font-size: 24px;
-  font-weight: 600;
-}
-.info-display .total-amount{
-  font-size: 24px;
-  font-weight: 600;
-}
-.info-display .total-expense{
+.info-display .total-expense {
   padding: 10px;
   display: flex;
-  margin: 10px; 
+  margin: 10px;
+  flex: 1;
   background-color: white;
   text-align: center;
-
 }
-.total-expense *{
+
+/* .total-expense *{
   color: red;
 }
 .total-savings *{
   color: blue;
 }.total-income *{
   color: green;
-}
-.info-display .total-savings{
+} */
+.total-savings {
   padding: 10px;
   text-align: center;
   display: flex;
   margin: 10px;
   background-color: white;
-
 }
-.total-income *,.total-expense *,.total-savings *{
-
+.total-income *,
+.total-expense *,
+.total-savings * {
   flex: 1;
 }

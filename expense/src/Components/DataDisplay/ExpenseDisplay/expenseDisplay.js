@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
-class ExpenseDisplay extends Component {
-  deleteElement = (id) => {
-    this.props.delete({ id: id, term: "expense" });
+function ExpenseDisplay(props)  {
+  const deleteElement = (id) => {
+    props.delete({ id: id, term: "expense" });
   };
-  render() {
-    let expense = this.props.expense.map((el) => {
+
+    let expense = props.expense.map((el) => {
       return (
-        <div className="transaction-display">
+        <div className="transaction-display"> 
           <div className="desc-display">{el.desc}</div>
           <div className="amount-display">{el.amount}</div>
-          <div className="cross" onClick={() => this.deleteElement(el.id)}>
+          <div className="cross" onClick={() => deleteElement(el.id)}>
             Del
           </div>
         </div>
@@ -21,7 +21,7 @@ class ExpenseDisplay extends Component {
         <div className="display-container">{expense}</div>
       </div>
     );
-  }
+
 }
 
 export default ExpenseDisplay;

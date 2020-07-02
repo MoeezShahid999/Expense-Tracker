@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
-class IncomeDisplay extends Component {
-    deleteElement=(id)=>{
-        this.props.delete({id:id,term:'income'})
+function IncomeDisplay(props) {
+   const  deleteElement=(id)=>{
+        props.delete({id:id,term:'income'})
     }
-  render() {
-    let income = this.props.income.map((el) => {
+
+    let income = props.income.map((el) => {
       return (
         <div className = 'transaction-display'>
           <div className="desc-display">{el.desc}</div>
           <div className="amount-display">{el.amount}</div>
-          <div className = 'cross' onClick = {()=>this.deleteElement(el.id)}>Del</div>
+          <div className = 'cross' onClick = {()=>deleteElement(el.id)}>Del</div>
         </div>
       );
     });
@@ -21,7 +21,7 @@ class IncomeDisplay extends Component {
         </div>
       </div>
     );
-  }
+
 }
 
 export default IncomeDisplay;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header/header";
@@ -7,62 +7,70 @@ import ExpenseContainer from "./Components/Expense/expense";
 import DataDisplay from "./Components/DataDisplay/display";
 import InfoDisplay from "./Components/Info/info";
 
-class App extends Component {
-  state = {
-    income: [],
-    expense: [],
-  };
-  delete = (data) => {
+function App ()  {
+  // state = {
+  //   income: [],
+  //   expense: [],
+  // };
+  const [incomeState,setIncome] = useState([])
+  const [expenseState,setExpense] = useState([])
+
+   const deleteRecord = (data)=>  {
     if (data.term == "income") {
-      let stateIncome = [...this.state.income];
-      debugger;
+      let stateIncome = [...incomeState];
+
       stateIncome.map((el, ind) => {
         if (el.id == data.id) {
           stateIncome.splice(ind, 1);
         }
       });
-      this.setState({
-        income: stateIncome,
-      });
+      setIncome(
+        stateIncome,
+      );
     } else {
-      let stateExpense = [...this.state.income];
+      let stateExpense = [...expenseState];
       stateExpense.map((el, ind) => {
         if (el.id == data.id) {
           stateExpense.splice(ind, 1);
         }
       });
-      this.setState({
-        income: stateExpense,
-      });
+      setExpense(
+
+        stateExpense,
+      );
     }
   };
-  ID = () => {
+
+  const ID = () => {
     return "_" + Math.random().toString(36).substr(2, 9);
   };
 
-  getIncome = (data) => {
-    let newData = { ...data, id: this.ID() };
-    this.setState({
-      income: [...this.state.income, { ...newData }],
-    });
-  };
-  getExpense = (data) => {
-    let newData = { ...data, id: this.ID() };
+  const getIncome = (data) => {
+    let newData = { ...data, id: ID() };
+    setIncome(
+      [...incomeState, { ...newData }],
 
-    this.setState({
-      expense: [...this.state.expense, { ...newData }],
-    });
+    );
   };
-  render() {
+  const getExpense = (data) => {
+    let newData = { ...data, id: ID() };
+
+    setExpense(
+
+     [...expenseState, { ...newData }],
+    );
+  };
+
     let total_expense = 0;
     let total_income = 0;
-    if (this.state.income.length > 0) {
-      this.state.income.map((el) => {
+    debugger
+    if (incomeState.length > 0) {
+      incomeState.map((el) => {
         total_income = +total_income + Number(el.amount);
       });
     }
-    if (this.state.expense.length > 0) {
-      this.state.expense.map((el) => {
+    if (expenseState.length > 0) {
+      expenseState.map((el) => {
         total_expense = +total_expense + Number(el.amount);
       });
     }
@@ -73,15 +81,15 @@ class App extends Component {
             <Header />
             <InfoDisplay income={total_income} expense={total_expense} />
             <div className="flex-box">
-              <IncomeContainer getIncome={this.getIncome} />
-              <ExpenseContainer getExpense={this.getExpense} />
+              <IncomeContainer getIncome={getIncome} />
+              <ExpenseContainer getExpense={getExpense} />
             </div>
-            <DataDisplay deleteElement={this.delete} data={this.state} />
+            <DataDisplay deleteElement={deleteRecord} data={{income:incomeState,expense:expenseState}} />
           </div>
         </div>
       </div>
     );
-  }
+
 }
 
 export default App;
