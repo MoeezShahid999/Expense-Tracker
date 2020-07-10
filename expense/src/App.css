@@ -1,5 +1,5 @@
 .App {
-  background-color: #443e3e33;
+  background-color: #2b2038bf;
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
@@ -10,7 +10,7 @@
 }
 .App .flex-box {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .App .flex-box .Income,
 .App .flex-box .Expense {
@@ -20,7 +20,7 @@
   /* border: 1px solid black; */
 }
 .App .flex-box .Income *,
-.App .flex-box .Expense *{
+.App .flex-box .Expense * {
   /* margin-left: 0px !important; */
   /* border: 1px solid black; */
 }
@@ -140,23 +140,28 @@
   font-size: 24px;
   font-weight: 600;
 }
-.info-display{
+.info-display {
   display: flex;
+  min-width: 390px;
 }
 .info-display .total-income {
   margin: 10px;
+  box-sizing: border-box;
   background-color: white;
   padding: 10px;
   text-align: center;
   display: flex;
   flex: 1;
+  min-width: 110px !important;
 }
 .info-display .total-expense {
   padding: 10px;
   display: flex;
   margin: 10px;
   flex: 1;
+  min-width: 110px !important;
   background-color: white;
+  box-sizing: border-box;
   text-align: center;
 }
 
@@ -174,9 +179,19 @@
   display: flex;
   margin: 10px;
   background-color: white;
+  box-sizing: border-box;
+  min-width: 110px !important;
+  flex: 1;
 }
 .total-income *,
 .total-expense *,
 .total-savings * {
   flex: 1;
+}
+
+.total-income,
+.total-expense,
+.total-savings {
+  height: 120px;
+  padding-top: 40px !important;
 }

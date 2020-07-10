@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import "./display.css";
+import React from "react";
 import IncomeDisplay from './IncomeDisplay/incomeDisplay'
 import ExpenseDisplay from './ExpenseDisplay/expenseDisplay'
 

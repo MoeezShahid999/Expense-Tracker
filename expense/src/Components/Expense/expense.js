@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./expense.css";
 function Expense(props) {
   const [desc, setDesc] = useState('');
   const [amount, setAmount] = useState('');

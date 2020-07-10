@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header/header";
 import IncomeContainer from "./Components/Income/income";

@@ -5,16 +5,16 @@ class Display extends Component {
     //   console.log(this.props.data)
     return (
       <div>
-        <div className="total-savings">
-          <div className="total-heading">Total Saving</div>
-          <div className="total-amount">
-            {this.props.income - this.props.expense}
-          </div>
-        </div>
         <div className="info-display">
           <div className="total-income">
             <div className="total-heading">Total Income</div>
             <div className="total-amount">{this.props.income}</div>
+          </div>
+          <div className="total-savings">
+            <div className="total-heading">Total Saving</div>
+            <div className="total-amount">
+              {this.props.income - this.props.expense}
+            </div>
           </div>
           <div className="total-expense">
             <div className="total-heading">Total Expense</div>
